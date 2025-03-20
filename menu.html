@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu - Athefhasan Shawarma</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Roboto&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: #192440;
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Navbar with Responsive Menu */
+      header {
+        background-color: #993300;
+        padding: 20px;
+        position: relative;
+      }
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+      nav h1 {
+        margin: 0;
+        font-family: "Oswald", sans-serif;
+        color: #ffcc00;
+      }
+      nav .menu {
+        display: flex;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      nav .menu li {
+        margin: 0 10px;
+      }
+      nav .menu li a {
+        color: #ffcc00;
+        text-decoration: none;
+        font-weight: bold;
+      }
+      nav .menu li a:hover {
+        color: #9dad7f;
+      }
+      .menu-toggle {
+        display: none;
+        cursor: pointer;
+      }
+      .menu-toggle span {
+        display: block;
+        width: 30px;
+        height: 4px;
+        background-color: #fff;
+        margin: 6px 0;
+        transition: 0.4s;
+      }
+
+      @media screen and (max-width: 768px) {
+        nav .menu {
+          display: none;
+          flex-direction: column;
+          background-color: #993300;
+          width: 100%;
+          position: absolute;
+          top: 70px;
+          left: 0;
+        }
+        nav .menu.active {
+          display: flex;
+        }
+        nav .menu li {
+          text-align: center;
+          margin: 10px 0;
+        }
+        .menu-toggle {
+          display: block;
+        }
+        .menu-toggle.active span:nth-of-type(1) {
+          transform: rotate(45deg) translate(5px, 5px);
+        }
+        .menu-toggle.active span:nth-of-type(2) {
+          opacity: 0;
+        }
+        .menu-toggle.active span:nth-of-type(3) {
+          transform: rotate(-45deg) translate(7px, -6px);
+        }
+      }
+
+        /* Your existing styles for menu items */
+        h2 {
+            font-family: 'Oswald', sans-serif;
+            color: #9dad7f;
+            margin-bottom: 30px;
+        }
+
+        .card {
+            background-color: #192440;
+            color: #fff;
+            border: 1px solid #ffcc00;
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .card-title {
+            color: #ffcc00;
+            font-family: 'Oswald', sans-serif;
+        }
+
+        .quantity-control {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        .quantity-control button {
+            background-color: #ffcc00;
+            border: none;
+            width: 30px;
+            height: 30px;
+            font-weight: bold;
+            color: #000;
+            transition: transform 0.2s;
+        }
+
+        .quantity-control button:hover {
+            transform: scale(1.2);
+            cursor: pointer;
+        }
+
+        .quantity-control span {
+            margin: 0 10px;
+            font-weight: bold;
+        }
+
+        .drink-select {
+            margin-top: 10px;
+        }
+
+        .order-btn {
+            background-color: #ffcc00;
+            color: #192440;
+            font-weight: bold;
+            font-size: 1.2rem;
+            border: none;
+            padding: 10px 25px;
+            display: inline-block;
+            border-radius: 8px;
+            margin: 10px;
+        }
+
+        .order-btn:hover {
+            background-color: #e6b800;
+        }
+
+        .modal-content {
+            background-color: #192440;
+            color: white;
+        }
+
+        .modal-title {
+            color: #ffcc00;
+        }
+
+        #order-summary-body p {
+            margin-bottom: 10px;
+        }
+
+        #order-summary-body h5 {
+            color: #9dad7f;
+        }
+
+        footer {
+            background-color: #993300;
+            text-align: center;
+            padding: 8px;
+            margin-top: auto;
+        }
+
+        footer a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+          <h1>Athefhasan Shawarma</h1>
+          <div class="menu-toggle" id="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <ul class="menu" id="menu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="menu.html">Menu</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="feedback.html">Feedback</a></li>
+          </ul>
+        </nav>
+      </header>
+
+    <br>
+    <br>
+
+    <section class="container my-5">
+        <h2 class="text-center">Our Menu</h2>
+        <div class="row">
+            <!-- Chicken Shawarma -->
+            <div class="col-md-6 col-lg-3 mb-4">
+                <div class="card shadow p-2">
+                    <img src="images/chicken.jpg" class="card-img-top" alt="Chicken Shawarma">
+                    <div class="card-body">
+                        <h5 class="card-title">Chicken Shawarma</h5>
+                        <p>
+                            <input type="checkbox" id="chickenBase"> Buy 1 Take 1 = ₱100<br>
+                            <input type="checkbox" id="chickenCheese"> With Cheese = ₱120
+                        </p>
+                        <select class="form-select drink-select">
+                            <option value="0">No Drink</option>
+                            <option value="15">Coke (₱15)</option>
+                            <option value="15">Sprite (₱15)</option>
+                            <option value="15">Royal (₱15)</option>
+                            <option value="15">Water (₱15)</option>
+                        </select>
+                        <div class="quantity-control">
+                            <button onclick="decreaseQty(this)">-</button>
+                            <span>1</span>
+                            <button onclick="increaseQty(this)">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Beef Shawarma -->
+            <div class="col-md-6 col-lg-3 mb-4">
+                <div class="card shadow p-2">
+                    <img src="images/beef.jpg" class="card-img-top" alt="Beef Shawarma">
+                    <div class="card-body">
+                        <h5 class="card-title">Beef Shawarma</h5>
+                        <p>
+                            <input type="checkbox" id="beefBase"> Buy 1 Take 1 = ₱100<br>
+                            <input type="checkbox" id="beefCheese"> With Cheese = ₱120
+                        </p>
+                        <select class="form-select drink-select">
+                            <option value="0">No Drink</option>
+                            <option value="15">Coke (₱15)</option>
+                            <option value="15">Sprite (₱15)</option>
+                            <option value="15">Royal (₱15)</option>
+                            <option value="15">Water (₱15)</option>
+                        </select>
+                        <div class="quantity-control">
+                            <button onclick="decreaseQty(this)">-</button>
+                            <span>1</span>
+                            <button onclick="increaseQty(this)">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chicken Biryani -->
+            <div class="col-md-6 col-lg-3 mb-4">
+                <div class="card shadow p-2">
+                    <img src="images/biryani.jpg" class="card-img-top" alt="Chicken Biryani">
+                    <div class="card-body">
+                        <h5 class="card-title">Chicken Biryani</h5>
+                        <p>
+                            <input type="checkbox" id="biryaniBase"> Rice Meal = ₱125<br>
+                            <input type="checkbox" id="biryaniExtraRice"> Add Extra Rice +₱20
+                        </p>
+                        <select class="form-select drink-select">
+                            <option value="0">No Drink</option>
+                            <option value="15">Coke (₱15)</option>
+                            <option value="15">Sprite (₱15)</option>
+                            <option value="15">Royal (₱15)</option>
+                            <option value="15">Water (₱15)</option>
+                        </select>
+                        <div class="quantity-control">
+                            <button onclick="decreaseQty(this)">-</button>
+                            <span>1</span>
+                            <button onclick="increaseQty(this)">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Beef Kebab -->
+            <div class="col-md-6 col-lg-3 mb-4">
+                <div class="card shadow p-2">
+                    <img src="images/kebab.jpg" class="card-img-top" alt="Beef Kebab">
+                    <div class="card-body">
+                        <h5 class="card-title">Beef Kebab</h5>
+                        <p>
+                            <input type="checkbox" id="kebabBase"> Rice Meal = ₱135<br>
+                            <input type="checkbox" id="kebabExtraRice"> Add Extra Rice +₱20
+                        </p>
+                        <select class="form-select drink-select">
+                            <option value="0">No Drink</option>
+                            <option value="15">Coke (₱15)</option>
+                            <option value="15">Sprite (₱15)</option>
+                            <option value="15">Royal (₱15)</option>
+                            <option value="15">Water (₱15)</option>
+                        </select>
+                        <div class="quantity-control">
+                            <button onclick="decreaseQty(this)">-</button>
+                            <span>1</span>
+                            <button onclick="increaseQty(this)">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mb-4">
+            <button class="order-btn" onclick="showOrderSummary()">Calculate Total</button>
+        </div>
+
+        <!-- Modal for price breakdown -->
+        <div class="modal fade" id="orderSummaryModal" tabindex="-1" aria-labelledby="orderSummaryModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content" style="background-color:#192440; color:white; border:2px solid #ffcc00;">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="orderSummaryModalLabel">Order Summary</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="filter: invert(1);"></button>
+                </div>
+                <div class="modal-body" id="order-summary-body" style="white-space:pre-line;"></div>
+                <div class="modal-footer">
+                  <button type="button" class="order-btn" onclick="completeOrder()" data-bs-dismiss="modal">Confirm Order</button>
+                </div>
+              </div>
+            </div>
+          </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2017 Athefhasan Shawarma </a></p>
+    </footer>
+
+    <script>
+        // Hamburger toggle
+      const menuToggle = document.getElementById("menu-toggle");
+      const menu = document.getElementById("menu");
+      menuToggle.addEventListener("click", () => {
+
+        menuToggle.classList.toggle("active");
+        menu.classList.toggle("active");
+      });
+
+        function increaseQty(btn) {
+            let span = btn.previousElementSibling;
+            span.textContent = parseInt(span.textContent) + 1;
+        }
+
+        function decreaseQty(btn) {
+            let span = btn.nextElementSibling;
+            if (parseInt(span.textContent) > 1) {
+                span.textContent = parseInt(span.textContent) - 1;
+            }
+        }
+
+        function showOrderSummary() {
+            let summary = '';
+            let total = 0;
+            let orderedSomething = false;
+
+            const menuItems = [
+                { name: 'Chicken Shawarma', baseId: 'chickenBase', cheeseId: 'chickenCheese', basePrice: 100, cheesePrice: 120 },
+                { name: 'Beef Shawarma', baseId: 'beefBase', cheeseId: 'beefCheese', basePrice: 100, cheesePrice: 120 },
+                { name: 'Chicken Biryani', baseId: 'biryaniBase', extraId: 'biryaniExtraRice', basePrice: 125, extraPrice: 20 },
+                { name: 'Beef Kebab', baseId: 'kebabBase', extraId: 'kebabExtraRice', basePrice: 135, extraPrice: 20 }
+            ];
+
+            document.querySelectorAll('.card').forEach((card, index) => {
+                const item = menuItems[index];
+                let qty = parseInt(card.querySelector('.quantity-control span').textContent);
+                let drinkPrice = parseInt(card.querySelector('.drink-select').value);
+                let price = 0;
+                let details = '';
+
+                if (document.getElementById(item.baseId)?.checked) {
+                    price = item.basePrice;
+                    details += `Base Meal = ₱${item.basePrice}`;
+                    if (item.extraId && document.getElementById(item.extraId)?.checked) {
+                        price += item.extraPrice;
+                        details += ` + Extra Rice (₱${item.extraPrice})`;
+                    }
+                }
+                if (item.cheeseId && document.getElementById(item.cheeseId)?.checked) {
+                    price = item.cheesePrice;
+                    details = `With Cheese = ₱${item.cheesePrice}`;
+                }
+
+                if ((price > 0 || drinkPrice > 0) && qty > 0) {
+                    orderedSomething = true;
+                    const itemTotal = (price + drinkPrice) * qty;
+                    total += itemTotal;
+                    summary += `<p><strong>${item.name}</strong> (x${qty}): ₱${itemTotal} [${details}${drinkPrice > 0 ? ` + Drink (₱15)` : ''}]</p>`;
+                }
+            });
+
+            if (!orderedSomething) {
+                alert("Oops! I think you forgot to order.");
+                return;
+            }
+
+            summary += `<hr><h5>Total: <span style="color:#ffcc00;">₱${total}</span></h5>`;
+            document.getElementById('order-summary-body').innerHTML = summary;
+
+            const modal = new bootstrap.Modal(document.getElementById('orderSummaryModal'));
+            modal.show();
+        }
+
+        function completeOrder() {
+            alert("Order's Complete! Thank you for ordering.");
+            document.querySelectorAll('input[type=checkbox]').forEach(chk => chk.checked = false);
+            document.querySelectorAll('.quantity-control span').forEach(span => span.textContent = '1');
+            document.querySelectorAll('.drink-select').forEach(select => select.value = '0');
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
