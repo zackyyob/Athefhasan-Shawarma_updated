@@ -201,14 +201,26 @@
     </footer>
 
     <script>
-        // Hamburger toggle
-      const menuToggle = document.getElementById("menu-toggle");
-      const menu = document.getElementById("menu");
-      menuToggle.addEventListener("click", () => {
-        menuToggle.classList.toggle("active");
-        menu.classList.toggle("active");
-      });
-    </script>
+        function toggleAnonymous() {
+            const anon = document.getElementById('anonymous').checked;
+            document.getElementById('name').disabled = anon;
+            if (anon) {
+                document.getElementById('name').value = '';
+            }
+        }
 
+        function submitFeedback() {
+            const feedback = document.getElementById('feedback').value.trim();
+            if (feedback === "") {
+                alert("Please write your feedback before submitting.");
+                return;
+            }
+            alert("Thank you for leaving a feedback! Take Care!");
+            document.getElementById('feedback').value = '';
+            document.getElementById('name').value = '';
+            document.getElementById('anonymous').checked = false;
+        }
+    </script>
+</body>
 </body>
 </html>
